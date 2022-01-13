@@ -1,0 +1,321 @@
+-- Pirson Life
+
+if game.PlaceId == 155615604 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("Serpent : Prison Life", "Serpent")
+
+    -- MAIN
+    local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("Main")
+
+    MainSection:NewDropdown("Give Gun", "Gives the localplayer a gun", {"M9", "Remington 870", "AK-47"}, function(v)
+        local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver[v].ITEMPICKUP
+        local Event = game:GetService("Workspace").Remote.ItemHandler
+        Event:InvokeServer(A_1)
+    end)
+
+    MainSection:NewDropdown("Gun Mod", "Makes the gun op", {"M9", "Remington 870", "AK-47"}, function(v)
+        local module = nil
+        if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(v) then
+            module = require(game:GetService("Players").LocalPlayer.Backpack[v].GunStates)
+        elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild(v) then
+            module = require(game:GetService("Players").LocalPlayer.Character[v].GunStates)
+        end
+        if module ~= nil then
+            module["MaxAmmo"] = math.huge
+            module["CurrentAmmo"] = math.huge
+            module["StoredAmmo"] = math.huge
+            module["FireRate"] = 0.000001
+            module["Spread"] = 0
+            module["Range"] = math.huge
+            module["Bullets"] = 10
+            module["ReloadTime"] = 0.000001
+            module["AutoFire"] = true
+        end
+    end)
+
+    -- PLAYER
+    local Player = Window:NewTab("Player")
+    local PlayerSection = Player:NewSection("Player")
+
+    PlayerSection:NewSlider("Walkspeed", "Changes the walkspeed", 250, 16, function(v)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+    end)
+
+    PlayerSection:NewSlider("Jumppower", "Changes the jumppower", 250, 50, function(v)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+    end)
+
+-- NINJA LEGENDS
+
+if game.PlaceId == 3956818381 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("Serpent : Ninja Legends", "Serpent")
+
+    -- MAIN
+    local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("Main")
+
+    MainSection:NewToggle("Auto Swing", "Make your player autoswing", function(v)
+        getgenv().autoswing = v
+        while true do
+            if not getgenv().autoswing then return end
+            for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if v:FindFirstChild("ninjitsuGain") then
+                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+                    break
+                end
+            end
+            local A_1 = "swingKatana"
+            local Event = game:GetService("Players").LocalPlayer.ninjaEvent
+            Event:FireServer(A_1)
+            wait(0.1)
+        end
+    end)
+
+    MainSection:NewToggle("Auto Sell", "Makes your player autosell", function(v)
+        getgenv().autosell = v
+        while true do
+            if getgenv().autoswing == false then return end
+            game:GetService("Workspace").sellAreaCircles["sellAreaCircle16"].circleInner.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+            wait(0.1)
+            game:GetService("Workspace").sellAreaCircles["sellAreaCircle16"].circleInner.CFrame = CFrame.new(0,0,0)
+            wait(0.1)
+        end
+    end)
+
+    MainSection:NewButton("Unlock all islands", "Unlocks all islands", function()
+        local oldcframe = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        for _,v in pairs(game:GetService("Workspace").islandUnlockParts:GetChildren()) do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+            wait(0.1)
+        end
+        wait(0.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldcframe
+    end)
+    
+    MainSection:NewToggle("Auto buy all swords", "Auto buys all swords", function(v)
+        getgenv().buyswords = v
+        while true do
+            if not getgenv().buyswords then return end
+            local A_1 = "buyAllSwords"
+            local A_2 = "Inner Peace Island"
+            local Event = game:GetService("Players").LocalPlayer.ninjaEvent
+            Event:FireServer(A_1, A_2)
+            wait(1)
+        end
+    end)
+
+    MainSection:NewToggle("Auto buy all belts", "Auto buys all belts", function(v)
+        getgenv().buybelts = v
+        while true do
+            if not getgenv().buybelts then return end
+            local A_1 = "buyAllBelts"
+            local A_2 = "Inner Peace Island"
+            local Event = game:GetService("Players").LocalPlayer.ninjaEvent
+            Event:FireServer(A_1, A_2)
+            wait(1)
+        end
+    end)
+end
+
+-- brick battle
+
+else
+
+if game.PlaceId == 1215581239 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("Serpent : DoomSpire BrickBattle", "Serpent")
+    
+    local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("Main")
+    
+        MainSection:NewDropdown("Teleports", "Teleports", {"Red", "Blue", "Green", "Yellow"}, function(v)
+        local A_1 = script.Parent Button.MouseButton1Click:Connect(function()
+    local player = game.Players.LocalPlayer
+    player.Character.HumanoidRootPart.CFrame = CFrame.new(-131.223, 24.7726, 0.0844507)
+end)
+        Event:InvokeServer(A_1)
+        end)
+
+
+else
+
+
+
+-- Box Simulator
+if game.PlaceId == 8367945454 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("Serpent : Box Simulator", "Serpent")
+    
+    local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("AutoFarm")
+    
+MainSection:NewButton("GiveCash MOD", "GiveCash", function(v) 
+    while true do
+local args = {
+    [1] = 1
+}
+local function callback(Text)
+end
+ 
+local NotificationBindable = Instance.new("BindableFunction")
+NotificationBindable.OnInvoke = callback
+ 
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Serpent";
+    Text = [[
+Cash Given
+]];
+
+    Duration = 5;
+})
+
+-- Sound Player
+
+local s = Instance.new("Sound")
+ 
+s.Name = "Sound"
+s.SoundId = "http://www.roblox.com/asset/?id=3241682089"
+s.Volume = 1
+s.Looped = false
+s.archivable = false
+ 
+s.Parent = game.Workspace
+ 
+wait(0.1)
+ 
+s:play()
+            wait(1)
+game:GetService("ReplicatedStorage").GiveCash.X1:FireServer(unpack(args))
+game:GetService("ReplicatedStorage").GiveCash.X500:FireServer(unpack(args))
+game:GetService("ReplicatedStorage").GiveCash.X2500:FireServer(unpack(args))
+game:GetService("ReplicatedStorage").GiveCash.X25000:FireServer(unpack(args))
+game:GetService("ReplicatedStorage").GiveCash.X50000:FireServer(unpack(args))
+game:GetService("ReplicatedStorage").GiveCash.X100000:FireServer(unpack(args))
+
+
+wait ()
+
+
+end
+        Event:InvokeServer(A_1)
+
+end
+            
+        )MainSection:NewButton("Sprinting MOD", "Serpent SPRINTING MOD", function(v)
+        getgenv().buybelts = v
+print [[
+<--- Local Time ------------------------
+----    SerpentSPRINTING MOD V1            ----
+
+-- Infinity Modding API has loaded!
+-- Infinity AntiCheat bypass has loaded!
+-- Infinity AutoUpdater detected (0) active updates
+-- Local WalkSpeed modified to (80)
+----------------------------------------------------
+Thanks for choosing infinity!
+----------------------------------------------------
+]]
+
+wait (1)
+
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+local sprintSpeed = 40
+
+mouse.KeyDown:Connect(function(key)
+	if key == "LeftShift" then
+		--Sprint
+		player.Character.Humanoid.WalkSpeed = sprintSpeed
+	end
+end)
+
+mouse.KeyUp:Connect(function(key)
+	if key == "LeftShift" then
+		--Stop Sprint
+		player.Character.Humanoid.WalkSpeed = 16
+	end
+end)
+-- Notification
+
+local function callback(Text)
+end
+ 
+local NotificationBindable = Instance.new("BindableFunction")
+NotificationBindable.OnInvoke = callback
+ 
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Serpent";
+    Text = [[
+Sprinting Modification
+has fully loaded, welcome
+C:/]];
+
+    Duration = "inf";
+})
+
+-- Sound Player
+
+local s = Instance.new("Sound")
+ 
+s.Name = "Sound"
+s.SoundId = "http://www.roblox.com/asset/?id=3241682089"
+s.Volume = 1
+s.Looped = false
+s.archivable = false
+ 
+s.Parent = game.Workspace
+ 
+wait(0.1)
+ 
+s:play()
+            wait(1)
+--
+
+end) else
+
+-- none
+        local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("Unsupported", "Serpent")
+    
+        end
+    end
+end
+
+-- Default loading
+
+local function callback(Text)
+end
+ 
+local NotificationBindable = Instance.new("BindableFunction")
+NotificationBindable.OnInvoke = callback
+ 
+game.StarterGui:SetCore("SendNotification", {
+    Title = "S Serpent S";
+    Text = [[
+C://API
+Spark API (Active)
+Infinity Contents (2)
+]];
+
+    Duration = "inf";
+})
+
+-- Sound Player
+
+local s = Instance.new("Sound")
+ 
+s.Name = "Sound"
+s.SoundId = "http://www.roblox.com/asset/?id=3241682089"
+s.Volume = 1
+s.Looped = false
+s.archivable = false
+ 
+s.Parent = game.Workspace
+ 
+wait(0.1)
+ 
+s:play()
+            wait(1)
